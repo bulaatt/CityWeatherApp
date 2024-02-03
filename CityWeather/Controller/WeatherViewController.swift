@@ -8,21 +8,20 @@
 import UIKit
 import CoreLocation
 
-let locationButton = UIButton()
-var weatherManager = WeatherManager()
-var searchTextField = UITextField()
-var conditionImageView = UIImageView(image: UIImage(systemName: "wind"))
-var temperatureLabel = UILabel()
-var cityLabel = UILabel()
-var feelsLikeLabel = UILabel()
-var windSpeedLabel = UILabel()
-
 // MARK: - WeatherViewController
 class WeatherViewController: UIViewController {
     
     let locationManager = CLLocationManager()
-    let weatherParametersView = WeatherParametersView()
     let weatherView = WeatherView()
+    let locationButton = UIButton()
+    
+    var weatherManager = WeatherManager()
+    var searchTextField = UITextField()
+    var conditionImageView = UIImageView(image: UIImage(systemName: "wind"))
+    var temperatureLabel = UILabel()
+    var cityLabel = UILabel()
+    var feelsLikeLabel = UILabel()
+    var windSpeedLabel = UILabel()
     
     // MARK: - Override Methods
     override func viewDidLoad() {
@@ -45,8 +44,21 @@ class WeatherViewController: UIViewController {
     }
 }
 
-// MARK: - WeatherParametersView
-class WeatherParametersView: UIView {
+// MARK: - Setting views
+extension WeatherViewController {
+    func setupView() {
+        view.backgroundColor = .systemBackground
+        navigationController?.navigationBar.prefersLargeTitles = true
+        title = "CityWeatherApp"
+        
+        addSubViews()
+        setupLayout()
+        style()
+    }
+}
+
+// MARK: - Interface style
+extension WeatherViewController {
     func style() {
         // Search TextField
         searchTextField.placeholder = "Search city"
@@ -79,19 +91,6 @@ class WeatherParametersView: UIView {
         locationButton.configuration = .filled()
         locationButton.configuration?.baseBackgroundColor = .systemPink
         locationButton.configuration?.title = "Get your weather"
-    }
-}
-
-// MARK: - Setting views
-extension WeatherViewController {
-    func setupView() {
-        view.backgroundColor = .systemBackground
-        navigationController?.navigationBar.prefersLargeTitles = true
-        title = "CityWeatherApp"
-        
-        addSubViews()
-        setupLayout()
-        weatherParametersView.style()
     }
 }
 
@@ -203,11 +202,11 @@ extension WeatherViewController: UITextFieldDelegate {
 extension WeatherViewController: WeatherManagerDelegate {
     func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel) {
         DispatchQueue.main.async {
-            temperatureLabel.text = "\(weather.temperatureString)°C"
-            conditionImageView.image = UIImage(systemName: weather.conditionName)
-            cityLabel.text = "City: \(weather.cityName)"
-            feelsLikeLabel.text = "Feels Like: \(weather.feelsLikeTemperatureString)°C"
-            windSpeedLabel.text = "Wind: \(weather.windSpeedString) m/s"
+            self.temperatureLabel.text = "\(weather.temperatureString)°C"
+            self.conditionImageView.image = UIImage(systemName: weather.conditionName)
+            self.cityLabel.text = "City: \(weather.cityName)"
+            self.feelsLikeLabel.text = "Feels Like: \(weather.feelsLikeTemperatureString)°C"
+            self.windSpeedLabel.text = "Wind: \(weather.windSpeedString) m/s"
         }
     }
     
