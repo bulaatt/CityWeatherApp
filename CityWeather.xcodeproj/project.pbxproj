@@ -45,6 +45,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9E04D15B2B6E995F00F1CE46 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9E6074572B5D9FBD00934240 /* WeatherAPI.swift */,
+				9E60745D2B5DA07600934240 /* WeatherManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		9E60742F2B5D7EC800934240 = {
 			isa = PBXGroup;
 			children = (
@@ -67,6 +76,7 @@
 				9E6074532B5D89A700934240 /* Model */,
 				9E6074542B5D89B100934240 /* View */,
 				9E6074522B5D899200934240 /* Controller */,
+				9E04D15B2B6E995F00F1CE46 /* Services */,
 				9E6074512B5D891D00934240 /* Other */,
 				9E6074492B5D7EC900934240 /* Info.plist */,
 			);
@@ -95,10 +105,8 @@
 		9E6074532B5D89A700934240 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9E6074572B5D9FBD00934240 /* WeatherAPI.swift */,
 				9E6074592B5D9FEE00934240 /* WeatherData.swift */,
 				9E60745B2B5DA02200934240 /* WeatherModel.swift */,
-				9E60745D2B5DA07600934240 /* WeatherManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
