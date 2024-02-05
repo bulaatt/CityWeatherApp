@@ -1,5 +1,5 @@
 # CityWeatherApp
-iOS app that displays weather by city or current location using openweathermap.org
+iOS app that displays weather by city or current location using [openweathermap.org](https://openweathermap.org)
 
 ## Built with
 - Swift
